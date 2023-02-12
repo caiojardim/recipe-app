@@ -1,0 +1,40 @@
+.modalContainer{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--gray-400-transparent);
+  
+}
+
+.modal {
+  width: 100%;
+  background-color: var(--gray-700);
+  color: var(--white);
+  max-width: 70rem;
+}
+
+.modal header {
+  background-color: var(--green-300);
+  color: var(--gray-700);
+  padding: 1rem;
+  font-size: .75rem;
+}
+
+.modal main {
+  padding: 1rem;
+}
+
+.ingredients {
+  margin-bottom: 1rem;
+}
+
+.ingredients h3 {
+  margin: 1rem 0;
+}
+
+.ingredients ul {
+  display: flex;
+  flex-direction: column;
+}

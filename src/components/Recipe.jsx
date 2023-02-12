@@ -1,4 +1,5 @@
 import styles from './Recipe.module.css'
+import { RecipeModal } from './RecipeModal.jsx'
 
 export function Recipe () {
   return (
@@ -11,8 +12,9 @@ export function Recipe () {
         <div className={styles.info}>
           <span>Bolos</span>
           <strong>Bolo de cenoura com Cobertura de chocolate</strong>
-          <button>Ver Receita</button>
+          <button> Ver Receita</button>
         </div>
+        <RecipeModal />
       </div>
 
       <div className={styles.recipe}>
