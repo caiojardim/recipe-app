@@ -3,7 +3,7 @@ import styles from './Recipe.module.css'
 import { RecipeModal } from './RecipeModal.jsx'
 
 import { recipes } from '../../recipes'
-
+ 
 export function Recipe () {
 
   const [openModalID, setOpenModalID] = useState(0)
@@ -17,7 +17,7 @@ export function Recipe () {
   }
 
   return (
-    <div> 
+    <div className={styles.recipeContainer}> 
       {recipes.map(recipe => {
         return (
           <div className={styles.recipe} key={recipe.id}>

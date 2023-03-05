@@ -1,3 +1,11 @@
+@media (min-width: 1120px) {
+  .recipeContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
 .recipe {
   display: flex;
   background-color: var(--gray-300);
@@ -5,8 +13,10 @@
   overflow: hidden;
 }
 
-.recipe + .recipe {
-  margin-top: 1rem;
+@media (max-width: 1120px) {
+  .recipe + .recipe {
+    margin-top: 1rem;
+  }
 }
 
 .recipe img {
