@@ -1,73 +1,34 @@
 import styles from './RecipeModal.module.css'
+import { X } from 'phosphor-react'
+import React from 'react'
 
-const recipe = {
-  id: 1,
-  title: 'Bolo de cenoura com cobertura de chocolate',
-  category: 'Bolos',
-  img: 'https://comidinhasdochef.com/wp-content/uploads/2020/02/Bolo-de-Cenoura-Tudo-Gostoso.jpg',
-  content: {
-    ingredients: [
-      {
-        title: 'MASSA',
-        rows: [
-          '1/2 xícara (chá) de óleo',
-          '3 cenouras médias raladas',
-          '4 ovos',
-          '2 xícaras (chá) de açúcar',
-          '2 e 1/2 xícaras (chá) de farinha de trigo',
-          '1 colher (sopa) de fermento em pó',
-        ]
-      }, {
-        title: 'COBERTURA',
-        rows: [
-          '1 colher (sopa) de manteiga',
-          '3 colheres (sopa) de chocolate em pó',
-          '1 xícara (chá) de açúcar',
-          '1 xícara (chá) de leite',
-        ]
-      }
-    ],
-    instructions: [
-      {
-        title: 'MASSA',
-        rows: [
-          'Em um liquidificador, adicione a cenoura, os ovos e o óleo, depois misture.',
-          'Acrescente o açúcar e bata novamente por 5 minutos.',
-          'Em uma tigela ou na batedeira, adicione a farinha de trigo e depois misture novamente.',
-          'Acrescente o fermento e misture lentamente com uma colher.',
-          'Asse em um forno preaquecido a 180° C por aproximadamente 40 minutos.',
-        ]
-      }, {
-        title: 'COBERTURA',
-        rows: [
-          'Despeje em uma tigela a manteiga, o chocolate em pó, o açúcar e o leite, depois misture.',
-          'Leve a mistura ao fogo e continue misturando até obter uma consistência cremosa, depois despeje a calda por cima do bolo.',
-        ]
-      }
-    ]
-  }
-}
-
-export function RecipeModal () {
+export function RecipeModal ({ recipe, handleCloseModal }) {
   return (
     <div className={styles.modalContainer}>
       <div className={styles.modal}>
         <header>
-          <h1>Bolo de cenoura com cobertura de chocolate</h1>
+          <h1>{recipe.title}</h1>
+          <button 
+            title='fechar receita'
+            onClick={handleCloseModal}
+          >
+            <X size={28} weight='bold'/>
+          </button>
+          
         </header>
         <main>
           <div className={styles.ingredients}>
             <h2>Ingredientes</h2>
               {recipe.content.ingredients.map(ingredients => {
               return (
-                <>
+                <React.Fragment key={ingredients.title}>
                   <h3>{ingredients.title}</h3>
                   <ul>
                     {ingredients.rows.map(row => {
-                      return <li>{row}</li>
+                      return <li key={row}>{row}</li>
                     })}
                   </ul>
-                </>
+                </React.Fragment>
               )
             })}
           </div>
@@ -76,14 +37,14 @@ export function RecipeModal () {
             <h2>Modo de Preparo</h2>
             {recipe.content.instructions.map(instruction => {
               return (
-                <>
+                <React.Fragment key={instruction.title}>
                   <h3>{instruction.title}</h3>
                   <ol>
                     {instruction.rows.map(row => {
-                      return <li>{row}</li>
+                      return <li key={row}>{row}</li>
                     })}
                   </ol>
-                </>
+                </React.Fragment>
               )
             })}
           </div>

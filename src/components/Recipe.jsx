@@ -1,33 +1,48 @@
+import { useState } from 'react'
 import styles from './Recipe.module.css'
 import { RecipeModal } from './RecipeModal.jsx'
 
-export function Recipe () {
-  return (
-    <div>
-      <div className={styles.recipe}>
-        <img 
-          src="https://comidinhasdochef.com/wp-content/uploads/2020/02/Bolo-de-Cenoura-Tudo-Gostoso.jpg" 
-          alt="bolo de cenoura" 
-        />
-        <div className={styles.info}>
-          <span>Bolos</span>
-          <strong>Bolo de cenoura com Cobertura de chocolate</strong>
-          <button> Ver Receita</button>
-        </div>
-        <RecipeModal />
-      </div>
+import { recipes } from '../../recipes'
 
-      <div className={styles.recipe}>
-        <img 
-          src="https://img.itdg.com.br/tdg/images/recipes/000/031/593/318825/318825_original.jpg?mode=crop&width=710&height=400" 
-          alt="Pudim" 
-        />
-        <div className={styles.info}>
-          <span>Doces</span>
-          <strong>Pudim</strong>
-          <button>Ver Receita</button>
-        </div>
-      </div>
+export function Recipe () {
+
+  const [openModalID, setOpenModalID] = useState(0)
+
+  function handleOpenModalButton(id) {
+    setOpenModalID(id)
+  }
+
+  function closeOpenModal () {
+    setOpenModalID(0)
+  }
+
+  return (
+    <div> 
+      {recipes.map(recipe => {
+        return (
+          <div className={styles.recipe} key={recipe.id}>
+            <img 
+              src={recipe.img}
+              alt={recipe.title}
+            />
+            <div className={styles.info}>
+              <span>{recipe.category}</span>
+              <strong>{recipe.title}</strong>
+              <button onClick={() => handleOpenModalButton(recipe.id)}>
+                Ver Receita
+              </button>
+            </div>
+            {recipe.id === openModalID ?
+             <RecipeModal 
+              recipe={recipe} 
+              handleCloseModal = {closeOpenModal}
+             /> :
+             ''
+            }
+           
+          </div>
+        )
+      })}
     </div>
   )
 }

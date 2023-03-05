@@ -13,14 +13,23 @@
   width: 100%;
   background-color: var(--gray-700);
   color: var(--white);
-  max-width: 70rem;
+  max-width: 60rem;
 }
 
 .modal header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: var(--green-300);
   color: var(--gray-700);
-  padding: 1rem;
+  padding: 1.25rem;
   font-size: .75rem;
+}
+
+.modal header button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 .modal main {
