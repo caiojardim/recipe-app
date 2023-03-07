@@ -1,4 +1,4 @@
-# This is as Recepi Application
+# This is as Recipe Application
 
 <h2>
   This application was created to improve my React knowledge, using Vite.
